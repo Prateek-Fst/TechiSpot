@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUsers } from './UsersData.js';
 import { useNavigate } from 'react-router-dom';
+import { postdata } from '../home/post/Posts.js';
 
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 import styles from './MyProfile.module.css'; 
@@ -44,18 +45,25 @@ export default function MyProfile() {
               </div>
               <div className = {styles['p']}></div>
               <div className="d-flex  justify-content-center text-center py-1 h-100">
-                 <div>
+                 <div className={styles.btn}>
                   <MDBCardText className="mb-1 h5">0</MDBCardText>
                    <MDBCardText className="small text-muted mb-0">Photos</MDBCardText>
                  </div>
-                 <div className="px-3">
+                 <div className={styles.btn}>
                    <MDBCardText className="mb-1 h5">0</MDBCardText>
                    <MDBCardText className="small text-muted mb-0">Followers</MDBCardText>
                  </div>
-                 <div>
+                 <div className={styles.btn}>
                     <MDBCardText className="mb-1 h5">0</MDBCardText>
                     <MDBCardText className="small text-muted mb-0">Following</MDBCardText>
+                  <div className={styles.imgBox}>
+                    <h2>Images Posted</h2>
+                  {postdata.map((value,index)=>
+                  <img className={styles.postImage} src={value.userPost.postImage} alt="" /> )}
+                  </div>
                  </div>
+                
+                
               </div>
             </MDBCard>
           </MDBCol>
